@@ -6,9 +6,10 @@ Pass the country name of you want to view the live score of and find out the liv
 
 Eg: To list down all live matches payed by Australian team use following command
 
- ./matchIDFinder.sh Australia
+ $./matchIDFinder.sh Australia
 
 2. Use "scoreboard.sh" script to display the live score of the match
+
 Eg: 
 $ ./scoreboard.sh <match id>
  
