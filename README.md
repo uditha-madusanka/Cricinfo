@@ -1,7 +1,7 @@
 # Cricinfo
 Live cricket score on Linux command prompt
 
-1. Find the match ID (ESPN Crickinfo) you want to watch the score using "MatchIDFinder.sh". 
+1. Find the match ID (ESPN Crickinfo) you want to watch the score using `MatchIDFinder.sh`. 
 Pass the country name of you want to view the live score of and find out the live match id
 
 Eg: To list down all live matches payed by Australian team use following command
@@ -13,7 +13,8 @@ Eg: To list down all live matches payed by Australian team use following command
 
 Eg: 
 `$ ./scoreboard.sh <match id>`
- 
---
+
 You can use "watch" command to view continues results
-Eg:`$ watch -n 60 scoreboard.sh <match id>`
+
+Eg:
+`$ watch -n 60 scoreboard.sh <match id>`
