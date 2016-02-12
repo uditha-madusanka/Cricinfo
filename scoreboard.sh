@@ -4,7 +4,7 @@
 #
 
 if [ $# -lt 1 ]; then
-  echo -e "!!Missing the match ID\nUsage:\n-----\n$0 <Match ID>\nExample: $0 895594\nNOTE: You can use crick.sh to find out the Match ID"
+  echo -e "!!Missing the match ID\nUsage:\n-----\n$0 <Match ID>\nExample: $0 895594\nNOTE: You can use matchIDFinder.sh to find out the Match ID"
   exit 0;
 fi
 

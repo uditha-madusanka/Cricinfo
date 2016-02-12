@@ -14,4 +14,4 @@ echo "-----------"
 curl -s "http://static.cricinfo.com/rss/livescores.xml"|  grep -i -e $1 -e $2 -A2 | grep "<title>" |awk -v FS="(>|<)" '{print $3}' 
 echo "Corresponding Match IDs"
 echo "-----------------------"
-curl -s "http://static.cricinfo.com/rss/livescores.xml"|  grep -i "$1 $2" -A2 | grep "<link>" | awk -v FS="(/|.html)" '{print $7}'
+curl -s "http://static.cricinfo.com/rss/livescores.xml"|  grep -i $1 -A2 | grep "<link>" | awk -v FS="(/|.html)" '{print $7}'
