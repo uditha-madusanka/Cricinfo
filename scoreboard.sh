@@ -7,6 +7,15 @@ if [ $# -lt 1 ]; then
   echo -e "!!Missing the match ID\nUsage:\n-----\n$0 <Match ID>\nExample: $0 895594\nNOTE: You can use matchIDFinder.sh to find out the Match ID"
   exit 0;
 fi
+# Check the running operating system
+if [[ `uname` == Darwin ]]
+then 
+	FSV="[||<]"
+elif [[ `uname` == Linux ]]
+then
+	FSV="(||<)"
+fi
+
 
 URL=http://www.espncricinfo.com/ci/engine/match/$1.html?view=scorecard;wrappertype=none
 # Show match summary
@@ -23,5 +32,5 @@ curl -s $URL| grep -A3 'bowling-table\|batsman-name' \
 				| sed -e "s/bowling-table/batsman-name\ndismissal-info\nbold\ntd\ class=\"\"\n/g" \
 				| awk -F">" '/batsman-name/ {b=$3} /dismissal-info/ {d=$2} /bold/ {a=$2} /td class=""/ {c=$2; print "|"b"|"d"|"a"|"c}' \
 				|sed -e "s/\/td|//g" -e "s/\/a//g" -e "s/|//g" \
-				| awk -v FS="(||<)" '{printf "%s%-6s%s%s\n", $3, "("$4")", " "$1, " "$2}' \
+				| awk -v FS=$FSV '{printf "%s%-6s%s%s\n", $3, "("$4")", " "$1, " "$2}' \
 				| sed -e "s/^()/--------------------/g" -e "s/&dagger;//g" -e "s/&amp;/\&/g"
