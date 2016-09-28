@@ -22,6 +22,7 @@ URL=http://www.espncricinfo.com/ci/engine/match/$1.html?view=scorecard;wrapperty
 printf "Match Summary\n---------------------\n"
 # Title
 curl -s $URL| grep 'team-1\|team-2' | awk -v FS="(\">|<)" '{print $3$5}'
+curl -s $URL| grep "innings-requirement" | awk -v FS="(\">|<)" '{print $3$5}'
 echo ""
 # Summary
 curl -s http://www.espncricinfo.com/ci/engine/match/$1.html | grep \<title\> | cut -d">" -f2 | cut -d"|" -f 1 |  sed -e "s/,/\n/g"  -e "s/(/- /g" -e "s/)//g" | sed -e "s/^ //g"
