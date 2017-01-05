@@ -25,7 +25,8 @@ curl -s $URL| grep 'team-1\|team-2' | awk -v FS="(\">|<)" '{print $3$5}'
 curl -s $URL| grep "innings-requirement" | awk -v FS="(\">|<)" '{print $3$5}'
 echo ""
 # Summary
-curl -s http://www.espncricinfo.com/ci/engine/match/$1.html | grep \<title\> | cut -d">" -f2 | cut -d"|" -f 1 |  sed -e "s/,/\n/g"  -e "s/(/- /g" -e "s/)//g" | sed -e "s/^ //g"
+curl -s http://www.espncricinfo.com/ci/engine/match/$1.html | grep \<title\> | cut -d">" -f2 | cut -d"|" -f 1 |  sed -e "s/,/\n/g"  -e "s/(/| /g" -e "s/)//g" | sed -e "s/^ //g" |awk  -F- '{print $1 "\033[1;31m" $2 "\033[0m"}'
+
 
 # Show full scoreboard
 printf "\nFull Scoreboard\n----------------------\n"
